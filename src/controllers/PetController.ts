@@ -1,19 +1,13 @@
 import { randomInt } from "node:crypto";
 import type { Request, Response } from "express";
-
-type Pet = {
-	readonly id: number;
-	nome: string;
-	especie: string;
-	idade: number;
-	adotado: boolean;
-};
+import type { PetType } from "../types/PetType";
 
 export class PetController {
-	private pets: Pet[] = [];
+	private pets: PetType[] = [];
 
 	criarPet(req: Request, res: Response) {
-		const { nome, especie, idade, adotado } = req.body as Pet;
+		const { nome, especie, idade, adotado } = req.body as PetType;
+
 		const pet = {
 			id: randomInt(1000),
 			nome,
@@ -21,7 +15,9 @@ export class PetController {
 			idade,
 			adotado,
 		};
+
 		this.pets.push(pet);
+
 		return res.status(201).json({ pet });
 	}
 }
