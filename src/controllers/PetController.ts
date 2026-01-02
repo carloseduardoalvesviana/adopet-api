@@ -8,7 +8,7 @@ export class PetController {
 	criarPet(req: Request, res: Response) {
 		const { nome, especie, idade, adotado } = req.body as PetType;
 
-		const pet = {
+		const pet: PetType = {
 			id: randomInt(1000),
 			nome,
 			especie,
