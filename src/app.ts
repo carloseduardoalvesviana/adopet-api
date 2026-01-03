@@ -1,5 +1,5 @@
 import express from "express";
-import petRouter from "./routes/pets";
+import { petRouter } from "./routes/pets";
 
 const app = express();
 app.use(express.json());
